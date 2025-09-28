@@ -160,4 +160,4 @@ gleam run -m chord_resilient 100 10 test-failures
 - **Network Scales**: 50-5000 nodes supported
 - **Failure Tolerance**: Up to 30% simultaneous failures
 
-This implementation represents a complete, academically rigorous, and production-ready distributed hash table system with comprehensive failure handling capabilities.
+This implementation represents a complete, academically rigorous, and production-ready distributed hash table system with comprehensive failure handling capabilities.# P2P
