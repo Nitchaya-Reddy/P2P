@@ -1,6 +1,6 @@
-name = "project3_optimized"
+name = "project3"
 version = "0.1.0"
-description = "Chord P2P System Implementation using Actor Model"
+description = "Chord P2P System"
 
 [dependencies]
 gleam_stdlib = "~> 0.38"
