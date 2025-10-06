@@ -46,20 +46,18 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 Project - 3/
 ├── README.md                     # This file
 ├── gleam.toml                    # Basic project configuration  
 ├── src/
-│   ├──project3_optimized.gleam  # Memory-optimized version (499 lines)
-├── bonus_failure_model/          # 🎯 BONUS: Failure resilience implementation
-│   ├── README.md                 # Bonus project documentation
-│   ├── gleam.toml                # Failure model project config
-│   ├── src/chord_resilient.gleam # Fault-tolerant implementation (845 lines)
-│   ├── RESILIENCE_REPORT.md      # Comprehensive technical report (15 pages)
-│   └── IMPLEMENTATION_SUMMARY.md # Executive summary of achievements
+│   ├──project3_optimized.gleam   # Memory-optimized version 
+├── test/          # BONUS: Failure resilience implementation
+│   ├── chord_p2p_test            # test p2p
+├── run_p2p.sh
+├── manifest.toml
 ```
 
 ---
@@ -147,7 +145,7 @@ Project - 3/
 
 ---
 
-## 📈 Performance Insights
+## Performance Insights
 - Lookup efficiency closely follows `O(log N)` behavior.  
 - Average hops roughly double when network size increases tenfold.  
 - Actor model ensures **high concurrency** and **low contention**.  
@@ -164,7 +162,7 @@ Project - 3/
 
 ---
 
-## 🎯 Bonus Work – Failure Model Extension
+## Bonus Work – Failure Model Extension
 The `bonus_failure_model` folder extends Chord with **fault tolerance**.  
 It introduces:  
 - Failure detection and recovery mechanisms.  
@@ -174,7 +172,7 @@ These improvements demonstrate Chord’s adaptability to real-world distributed 
 
 ---
 
-## 🧰 How to Run
+## How to Run
 
 ### Steps
 
