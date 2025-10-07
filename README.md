@@ -24,7 +24,7 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ---
 
-##  Technologies & Tools Used
+##  Tools 
 
  **Gleam**  Functional programming language for building concurrent systems 
  **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
@@ -49,8 +49,8 @@ Project - 3/
 ├── README.md                     # This file
 ├── gleam.toml                    # Basic project configuration  
 ├── src/
-│   ├──project3_optimized.gleam   # Memory-optimized version 
-├── test/          # BONUS: Failure resilience implementation
+│   ├──project3.gleam          # Memory-optimized version 
+├── test/          
 │   ├── chord_p2p_test            # test p2p
 ├── run_p2p.sh
 ├── manifest.toml
@@ -132,12 +132,12 @@ Project - 3/
 
 ## Testing and Results
 
-| Test Scenario | # Nodes | # Requests | Avg Hops | Observations |
-|----------------|----------|-------------|-----------|----------------|
-| Small Network | 10 | 5 | ~2.3 | Stable and consistent routing |
-| Medium Network | 100 | 10 | ~4.9 | Lookup scales logarithmically |
-| Large Network | 1000 | 10 | ~9.8 | Expected logarithmic hop increase |
-| Max Stable | 2000 | 10 | ~10–12 | Stable but memory-intensive |
+| # Nodes | # Requests | Avg Hops |
+|----------|-------------|-----------|
+| 10 | 5 | ~2.3 |
+| 100 | 10 | ~4.9 | 
+| 1000 | 10 | ~9.8 | 
+| 2000 | 10 | ~10–12 | 
 
 ---
 
@@ -163,13 +163,13 @@ Project - 3/
 
 ```bash
 gleam build
-chmod +x run_optimized.sh
+chmod +x run_p2p.sh
 ./run_optimized.sh <numNodes> <numRequests>
 ```
 
 Manual execution:
 
 ```bash
-gleam run -m project3_optimized <numNodes> <numRequests>
+gleam run -m project3 <numNodes> <numRequests>
 ```
 
