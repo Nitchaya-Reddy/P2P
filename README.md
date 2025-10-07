@@ -26,13 +26,9 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ##  Technologies & Tools Used
 
-| Tool | Purpose |
-|------|----------|
-| **Gleam** | Functional programming language for building concurrent systems |
-| **Erlang/OTP** | Backend runtime enabling actor-based concurrency |
-| **gleam_otp** | Provides process management and message passing framework |
-| **gleam_stdlib** | Core standard library for Gleam language |
-| **Bash** | Used for simulation and automation (`run_optimized.sh`) |
+ **Gleam**  Functional programming language for building concurrent systems 
+ **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
+ **gleam_otp**  Provides process management and message passing framework 
 
 ---
 
@@ -159,17 +155,6 @@ Project - 3/
 - Actor-based design in Gleam provides natural concurrency.  
 - Stabilization maintains accurate routing tables during network changes.  
 - Memory optimization extends scalability for large test cases.  
-
----
-
-## Bonus Work – Failure Model Extension
-The `bonus_failure_model` folder extends Chord with **fault tolerance**.  
-It introduces:  
-- Failure detection and recovery mechanisms.  
-- Periodic replica updates to prevent data loss.  
-- A resilience layer ensuring consistent routing under churn.  
-These improvements demonstrate Chord’s adaptability to real-world distributed network conditions.
-
 ---
 
 ## How to Run
