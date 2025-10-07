@@ -59,8 +59,8 @@ Project - 3/
 
 ## What is Working
 
-- *main:* Gets command line arguments, validates them, calls run_optimized_simulation
-- *run_optimized_simulation:* Coordinates the entire process, calls all setup and execution functions
+- *main:* Takes inputs from command line arguments, validates them, calls run_optimized_simulation
+- *run_optimized_simulation:* Coordinates the entire process, calls all setup and execution functions and creates nodes for all number of nodes
 - *create_optimized_node_ids:* Makes unique IDs for each node using SHA-1, returns sorted list
 - *generate_node_id:* Takes a string, calls sha1_hash, converts to number with modulo
 - *sha1_hash:* Implements SHA-1 algorithm, returns 160-bit hash as bytes
@@ -151,18 +151,23 @@ Project - 3/
 
 ---
 
-## Testing and Results
+# Testing and Results
 
-| # Nodes | # Requests | Avg Hops |
-|----------|-------------|-----------|
-| 10 | 5 | ~2.3 |
-| 100 | 10 | ~4.9 | 
-| 1000 | 10 | ~9.8 | 
-| 2000 | 10 | ~10–12 | 
+**Output**
+![output](./output.png)
 
 ---
+# Largest Problem Solved
 
-## Performance Insights
+The implementation was successfully tested on a maximum input size of:
+
+number of nodes = 5000 number of requests = 100
+
+**Output** 
+
+![output for no.nodes=5000 no.requestss=24](./largest-input.png)
+
+# Performance Insights
 - Lookup efficiency closely follows `O(log N)` behavior.  
 - Average hops roughly double when network size increases tenfold.  
 - Actor model ensures **high concurrency** and **low contention**.  
@@ -170,7 +175,7 @@ Project - 3/
 
 ---
 
-## Observations
+# Observations
 
 - Chord achieves decentralized and fault-tolerant lookups efficiently.  
 - Actor-based design in Gleam provides natural concurrency.  
@@ -178,9 +183,9 @@ Project - 3/
 - Memory optimization extends scalability for large test cases.  
 ---
 
-## How to Run
+# How to Run
 
-### Steps
+**Steps**
 
 ```bash
 gleam build
@@ -188,7 +193,7 @@ chmod +x run_p2p.sh
 ./run_p2p.sh <numNodes> <numRequests>
 ```
 
-Manual execution:
+**Manual execution:**
 
 ```bash
 gleam build
