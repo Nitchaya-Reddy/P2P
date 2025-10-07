@@ -26,9 +26,9 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ##  Tools 
 
- **Gleam**  Functional programming language for building concurrent systems 
- **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
- **gleam_otp**  Provides process management and message passing framework 
+ **Gleam**  Functional programming language for building concurrent systems \
+ **Erlang/OTP**  Backend runtime enabling actor-based concurrency \
+ **gleam_otp**  Provides process management and message passing framework \
 
 ---
 
