@@ -24,7 +24,7 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ---
 
-##  Used 
+##  Tools
 
  **Gleam**  Functional programming language for building concurrent systems 
  **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
@@ -56,6 +56,28 @@ Project - 3/
 ```
 
 ---
+
+## What is Working
+
+- *main:* Gets command line arguments, validates them, calls run_optimized_simulation
+- *run_optimized_simulation:* Coordinates the entire process, calls all setup and execution functions
+- *create_optimized_node_ids:* Makes unique IDs for each node using SHA-1, returns sorted list
+- *generate_node_id:* Takes a string, calls sha1_hash, converts to number with modulo
+- *sha1_hash:* Implements SHA-1 algorithm, returns 160-bit hash as bytes
+- *create_optimized_actors:* Makes an actor for each node ID, returns list of ID and actor pairs
+- *create_single_actor:* Creates one actor with initial state and message handler
+- *create_nodes_dict:* Builds dictionary mapping node IDs to actors
+- *setup_optimized_ring:* Sets up successors and finger tables for all nodes
+- *find_successor:* Finds next node in ring after given ID
+- *build_finger_table:* Creates 16 routing entries for a node
+- *start_coordinator:* Creates coordinator actor to collect statistics
+- *run_batched_simulation:* Generates lookup keys and sends them to nodes
+- *handle_optimized_message:* Processes messages for node actors, handles routing
+- *is_between:* Checks if a value is between two points on the ring
+- *find_closest_finger:* Finds best next hop from finger table
+- *collect_results:* Waits for completion, requests stats from nodes, sends to coordinator
+- *handle_coordinator_message:* Receives statistics, calculates average, prints output
+
 
 ##  Core Implementation 
 
