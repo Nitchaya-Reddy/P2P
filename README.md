@@ -26,9 +26,8 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ##  Used 
 
- **Gleam**  Functional programming language for building concurrent systems \
- **Erlang/OTP**  Backend runtime enabling actor-based concurrency \
- **gleam_otp**  Provides process management and message passing framework 
+ **Gleam**  Functional programming language for building concurrent systems 
+ **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
 
 ---
 
@@ -46,12 +45,12 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ```
 Project - 3/
-├── README.md                     # This file
-├── gleam.toml                    # Basic project configuration  
+├── README.md                     
+├── gleam.toml                     
 ├── src/
-│   ├──project3.gleam          # Memory-optimized version 
+│   ├──project3.gleam           
 ├── test/          
-│   ├── chord_p2p_test            # test p2p
+│   ├── chord_p2p_test
 ├── run_p2p.sh
 ├── manifest.toml
 ```
@@ -164,12 +163,13 @@ Project - 3/
 ```bash
 gleam build
 chmod +x run_p2p.sh
-./run_optimized.sh <numNodes> <numRequests>
+./run_p2p.sh <numNodes> <numRequests>
 ```
 
 Manual execution:
 
 ```bash
-gleam run -m project3 <numNodes> <numRequests>
+gleam build
+gleam run <numNodes> <numRequests>
 ```
 
