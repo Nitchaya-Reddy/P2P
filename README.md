@@ -1,12 +1,14 @@
 # Project 3 : Chord Protocol using Actor Model (Gleam)
 
 ## Team Members
-- Nitchaya Reddy  
-- Chinmai Mandala  
+
+- Nitchaya Reddy  UFID 34102083
+- Chinmai Mandala  UFID 71900982
 
 ---
 
-##  Project Overview
+## Project Overview
+
 This project is an application of the **Chord Protocol**, a distributed lookup service for peer-to-peer (P2P) systems, built using **Gleam** and the **Actor Model**.  
 Chord allows a decentralized network to efficiently locate the node responsible for a given key, even as nodes dynamically join or leave.  
 It demonstrates scalability, fault tolerance, and distributed consistency.
@@ -24,14 +26,15 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ---
 
-##  Tools
+## Tools
 
- **Gleam**  Functional programming language for building concurrent systems 
- **Erlang/OTP**  Backend runtime enabling actor-based concurrency 
+ **Gleam**  Functional programming language for building concurrent systems
+ **Erlang/OTP**  Backend runtime enabling actor-based concurrency
 
 ---
 
-##  Core Features Implemented
+## Core Features Implemented
+
 - Overlay network creation using unique node identifiers  
 - Finger table routing for logarithmic lookups  
 - Node join and stabilization protocols  
@@ -41,7 +44,7 @@ The objective is to demonstrate **logarithmic routing efficiency**, **decentrali
 
 ---
 
-##  Repository Structure
+## Repository Structure
 
 ```
 Project - 3/
@@ -78,10 +81,10 @@ Project - 3/
 - *collect_results:* Waits for completion, requests stats from nodes, sends to coordinator
 - *handle_coordinator_message:* Receives statistics, calculates average, prints output
 
-
-##  Core Implementation 
+## Core Implementation
 
 ### 1. System Initialization
+
 - The simulation starts by reading input parameters: number of nodes and number of requests per node.  
 - Each node is created as an **independent actor process**, ensuring concurrency and isolation.  
 - The first node forms the **initial Chord ring**, while subsequent nodes **join dynamically**.  
@@ -90,6 +93,7 @@ Project - 3/
 ---
 
 ### 2. Actor Behavior and Communication
+
 - Each node runs as a **Gleam OTP actor** with its own state and mailbox.  
 - Communication between nodes occurs through **asynchronous message passing**.  
 - No shared memory is used — all coordination occurs via message exchange.  
@@ -99,6 +103,7 @@ Project - 3/
 ---
 
 ### 3. Node Join Process
+
 - When a new node joins, it identifies its **correct position** in the ring.  
 - It contacts a known node to find its **successor** (the next clockwise node).  
 - The node initializes its **finger table**, successor, and predecessor pointers.  
@@ -107,6 +112,7 @@ Project - 3/
 ---
 
 ### 4. Finger Table Construction and Maintenance
+
 - Each node maintains a **finger table**, mapping exponentially spaced nodes around the ring.  
 - This allows efficient lookups by skipping multiple nodes per hop.  
 - Periodic **FixFingers** messages refresh table entries for accuracy.  
@@ -115,6 +121,7 @@ Project - 3/
 ---
 
 ### 5. Lookup and Routing
+
 - Nodes receiving lookup requests first check if the key belongs to their range.  
 - If not, they forward the query to the **closest preceding node** in their finger table.  
 - Each hop brings the query closer to the correct node, yielding `O(log N)` efficiency.  
@@ -123,6 +130,7 @@ Project - 3/
 ---
 
 ### 6. Stabilization and Consistency
+
 - Nodes periodically run **stabilization routines** to verify successor and predecessor accuracy.  
 - If discrepancies are detected (due to new joins or delayed updates), they are corrected automatically.  
 - This ensures the ring remains **consistent and connected** at all times.  
@@ -130,6 +138,7 @@ Project - 3/
 ---
 
 ### 7. Key–Value Storage Layer
+
 - Each key-value pair is stored on the node with the **closest ID ≥ key hash**.  
 - Lookups traverse the ring to locate the responsible node.  
 - This mirrors real-world DHT-based systems like **Amazon Dynamo** and **Cassandra**.  
@@ -138,6 +147,7 @@ Project - 3/
 ---
 
 ### 8. Hop Count Measurement and Output
+
 - Each request records the number of hops during lookup.  
 - When all nodes finish their requests, the total hops are aggregated.  
 - The program prints the **average number of hops**, verifying logarithmic scalability.  
@@ -145,6 +155,7 @@ Project - 3/
 ---
 
 ### 9. Memory Optimization and Scalability
+
 - The `run_optimized.sh` script enables large-scale testing with reduced memory footprint.  
 - Supports simulations up to **2000 nodes** efficiently.  
 - Warns users when running potentially intensive workloads.  
@@ -157,17 +168,19 @@ Project - 3/
 ![output](./output.png)
 
 ---
+
 # Largest Problem Solved
 
 The implementation was successfully tested on a maximum input size of:
 
 number of nodes = 5000 number of requests = 100
 
-**Output** 
+**Output**
 
 ![output for no.nodes=5000 no.requestss=24](./largest-input.png)
 
 # Performance Insights
+
 - Lookup efficiency closely follows `O(log N)` behavior.  
 - Average hops roughly double when network size increases tenfold.  
 - Actor model ensures **high concurrency** and **low contention**.  
@@ -181,6 +194,7 @@ number of nodes = 5000 number of requests = 100
 - Actor-based design in Gleam provides natural concurrency.  
 - Stabilization maintains accurate routing tables during network changes.  
 - Memory optimization extends scalability for large test cases.  
+
 ---
 
 # How to Run
@@ -199,4 +213,3 @@ chmod +x run_p2p.sh
 gleam build
 gleam run <numNodes> <numRequests>
 ```
-
