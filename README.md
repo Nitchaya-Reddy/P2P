@@ -1,9 +1,9 @@
-# Project 3 : Chord Protocol using Actor Model (Gleam)
+# Chord Protocol using Actor Model Using Gleam
 
 ## Team Members
 
-- Nitchaya Reddy  UFID 34102083
-- Chinmai Mandala  UFID 71900982
+- Venkata Nitchaya Reddy Konkala
+- Chinmai Mandala  
 
 ---
 
